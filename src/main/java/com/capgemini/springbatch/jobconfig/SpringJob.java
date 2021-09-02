@@ -1,5 +1,6 @@
 package com.capgemini.springbatch.jobconfig;
 
+import com.capgemini.springbatch.service.EmployeeService;
 import com.capgemini.springbatch.service.EmployeeServiceAdaptor;
 import com.capgemini.springbatch.model.Employee;
 import org.springframework.batch.core.Job;
@@ -52,10 +53,10 @@ public class SpringJob {
     }
 
     @Bean
-    public ItemReaderAdapter itemReaderAdapter(EmployeeServiceAdaptor employeeService){
+    public ItemReaderAdapter itemReaderAdapter(EmployeeService employeeService){
         ItemReaderAdapter<Employee> adapter = new ItemReaderAdapter<>();
         adapter.setTargetObject(employeeService);
-        adapter.setTargetMethod("nextEmployee");
+        adapter.setTargetMethod("getEmployeeList");
         return adapter;
     }
 
