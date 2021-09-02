@@ -10,18 +10,23 @@ import java.util.List;
 
 @Service
 public class EmployeeService  {
-    public List<Employee> getEmployeeList(){
-        List list = new ArrayList<Employee>();
+    private int nextStudentIndex=0;
+    public Employee getEmployeeList(){
+        Employee emp;
+        List<Employee> list = new ArrayList();
         RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity httpEntity = new HttpEntity(headers);
-        ResponseEntity<Employee[]> forObject = restTemplate
-                .exchange("http://localhost:8081/list",HttpMethod.GET,httpEntity,Employee[].class);
-        for (Employee employee : forObject.getBody()) {
+        Employee[] forObject = restTemplate
+                .getForObject("http://localhost:8081/list",Employee[].class);
+        for (Employee employee : forObject) {
             list.add(employee);
         }
-        return list;
+        if (nextStudentIndex<list.size()){
+            emp = list.get(nextStudentIndex);
+            nextStudentIndex++;
+        }else {
+            nextStudentIndex = 0;
+            emp = null;
+        } return emp;
     }
 
 }

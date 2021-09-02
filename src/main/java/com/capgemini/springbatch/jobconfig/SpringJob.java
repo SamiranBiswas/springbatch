@@ -43,7 +43,7 @@ public class SpringJob {
 
     @Bean
     public Step step() {
-        return stepBuilderFactory.get("HelloWorld").chunk(1)
+        return stepBuilderFactory.get("HelloWorld").chunk(2)
               //  .reader(flatFileItemReader(null))
                // .reader(xmlItemReader(null))
               //  .reader(jdbcBatchItemWriter(null))
