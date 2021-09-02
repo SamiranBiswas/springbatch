@@ -1,0 +1,13 @@
+<list>
+    <employee>
+        <id>1</id>
+        <name>samiran</name>
+        <email>gmail</email>
+    </employee>
+    <employee>
+        <id>2</id>
+        <name>rahul</name>
+        <email>hotmail</email>
+    </employee>
+</list>
+
